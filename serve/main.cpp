@@ -14,12 +14,31 @@
 #define SERVER_PORT 6666
 
 using namespace std;
+/*
+以逗号分隔字符串
+*/
+void SplitString(const string& s, vector<string>& v, const string& c)
+{
+    string::size_type pos1, pos2;
+    pos2 = s.find(c);
+    pos1 = 0;
+    while(string::npos != pos2)
+    {
+        v.push_back(s.substr(pos1, pos2-pos1));
+        pos1 = pos2 + c.size();
+        pos2 = s.find(c, pos1);
+    }
+    if(pos1 != s.length())
+        v.push_back(s.substr(pos1));
+}
 int stringToNum(char buff[]){
     string s = buff;
     stringstream ss;
     ss<<s;
-    int res;
+    string res;
     ss>>res;
+    vector<string> v;
+    SplitString(res,v,",");
     return res;
 }
 /*
@@ -51,6 +70,9 @@ void recvMsg(int serverSocket,char recvbuff[]){
     recvbuff[iDataNum] = '\0';
     int res = stringToNum(recvbuff);
     cout<<"接受到的数字："<<res<<endl;
+}
+int computeTP(int step,bool great){
+
 }
 /*
 监听后，一直处于accept阻塞状态，
