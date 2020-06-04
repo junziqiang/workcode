@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1591175449 source:d:\serve\main.cpp
+	<sys/stat.h>
+	<fcntl.h>
+	<winsock2.h>
+	<windows.h>
+	<errno.h>
+	<stdlib.h>
+	<string.h>
+	<sys/types.h>
+	<ws2tcpip.h>
+	<stdio.h>
+	<unistd.h>
+
